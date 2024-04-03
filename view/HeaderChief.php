@@ -40,7 +40,7 @@
             <nav class="col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <ul class="nav justify-content-center">
                     <?php
-                    $actions = ['home', 'brands', 'categories', 'shops', 'products', 'inventory'];
+                    $actions = ['home', 'brands', 'categories', 'shops', 'products', 'inventory', 'employees'];
                     $currentAction = isset($_GET["action"]) ? $_GET["action"] : 'home';
                     foreach ($actions as $action) {
                         $active = ($currentAction == $action) ? 'link-primary' : 'text-dark';
