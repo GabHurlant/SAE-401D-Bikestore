@@ -1,4 +1,18 @@
-<?php require_once("www/HeaderCustomer.php") ?>
+<?php
+if (isset($_COOKIE["employeeInfo"])) {
+    $employeeInfo = json_decode($_COOKIE["employeeInfo"], true);
+
+    if ($employeeInfo["role"] == "employee") {
+        require_once "www/HeaderEmp.php";
+    } else if ($employeeInfo["role"] == "chief") {
+        require_once "www/HeaderChief.php";
+    } else if ($employeeInfo["role"] == "it") {
+        require_once "www/HeaderIt.php";
+    }
+} else {
+    require_once "www/HeaderCustomer.php";
+}
+?>
 
 <head>
     <title>Home</title>
@@ -45,7 +59,19 @@
         </section>
     </div>
 
-    <?php require_once("www/FooterCustomer.php") ?>
+    <?php if (isset($_COOKIE["employeeInfo"])) {
+        $employeeInfo = json_decode($_COOKIE["employeeInfo"], true);
+
+        if ($employeeInfo["role"] == "employee") {
+            require_once "www/FooterEmp.php";
+        } else if ($employeeInfo["role"] == "chief") {
+            require_once "www/FooterChief.php";
+        } else if ($employeeInfo["role"] == "it") {
+            require_once "www/FooterIt.php";
+        }
+    } else {
+        require_once "www/FooterCustomer.php";
+    } ?>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="script/home.js" async></script>
