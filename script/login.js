@@ -27,6 +27,7 @@ $(document).ready(function () {
             name: response.employeeName,
             email: response.employeeEmail,
             role: response.employeeRole,
+            store: response.storeId,
           };
           document.cookie =
             "employeeInfo=" +
