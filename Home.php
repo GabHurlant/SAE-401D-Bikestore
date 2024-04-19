@@ -1,4 +1,4 @@
-<?php require_once("HeaderCustomer.php") ?>
+<?php require_once("www/HeaderCustomer.php") ?>
 
 <head>
     <title>Home</title>
@@ -15,7 +15,7 @@
 
         <!-- Section for the table -->
         <section id="data-section" class="my-4 w-100">
-            <table id="api-data-table" class="table">
+            <table id="products" class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -31,7 +31,7 @@
         </section>
     </div>
 
-    <?php require_once("FooterCustomer.php") ?>
+    <?php require_once("www/FooterCustomer.php") ?>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -67,6 +67,32 @@
         // Retrieve the API data and display it in the console
         var ip = <?php echo json_encode(file_get_contents('https://api-bdc.net/data/client-ip')); ?>;
         console.log(ip);
+
+        // API data for the products 
+        // Récupérer les données de l'API
+        $.ajax({
+            url: 'https://dev-lasne221.users.info.unicaen.fr/bikestores/products',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                // Injecter les données dans le tableau
+                var table = document.getElementById('products');
+                data.forEach(item => {
+                    var row = table.insertRow();
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    cell1.textContent = item.id; // Remplacez 'id' par le nom de la propriété appropriée
+                    cell2.textContent = item.first; // Remplacez 'first' par le nom de la propriété appropriée
+                    cell3.textContent = item.last; // Remplacez 'last' par le nom de la propriété appropriée
+                    cell4.textContent = item.handle; // Remplacez 'handle' par le nom de la propriété appropriée
+                });
+            },
+            error: function(error) {
+                console.log('Error:', error);
+            }
+        });
     </script>
 </body>
 
