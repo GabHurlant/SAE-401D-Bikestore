@@ -34,11 +34,11 @@
     <div class="col mb-3">
         <ul class="list-unstyled">
             <?php
-            $actions = ['home', 'legal-notice', 'about-us'];
-            $currentAction = isset($_GET["action"]) ? $_GET["action"] : 'home';
-            foreach ($actions as $action) {
-                $active = ($currentAction == $action) ? 'link-primary' : 'text-dark';
-                echo "<li><a href=\"index.php?action=$action\" class=\"nav-link px-2 $active\">" . ucfirst(str_replace('-', ' ', $action)) . "</a></li>";
+            $pages = ['home', 'legal-notice', 'about-us'];
+            $currentPage = basename($_SERVER['PHP_SELF'], ".php");
+            foreach ($pages as $page) {
+                $active = ($currentPage == $page) ? 'link-primary' : 'text-dark';
+                echo "<li><a href=\"$page.php\" class=\"nav-link px-2 $active\">" . ucfirst(str_replace('-', ' ', $page)) . "</a></li>";
             }
             ?>
         </ul>

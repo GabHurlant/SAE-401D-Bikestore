@@ -33,18 +33,18 @@
             <nav>
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                     <?php
-                    $actions = ['home', 'legal-notice', 'about-us'];
-                    $currentAction = isset($_GET["action"]) ? $_GET["action"] : 'home';
-                    foreach ($actions as $action) {
-                        $active = ($currentAction == $action) ? 'link-primary' : 'text-dark';
-                        echo "<li><a href=\"index.php?action=$action\" class=\"nav-link px-2 $active\">" . ucfirst(str_replace('-', ' ', $action)) . "</a></li>";
+                    $pages = ['home', 'legal-notice', 'about-us'];
+                    $currentPage = basename($_SERVER['PHP_SELF'], ".php");
+                    foreach ($pages as $page) {
+                        $active = ($currentPage == $page) ? 'link-primary' : 'text-dark';
+                        echo "<li><a href=\"$page.php\" class=\"nav-link px-2 $active\">" . ucfirst(str_replace('-', ' ', $page)) . "</a></li>";
                     }
                     ?>
                 </ul>
             </nav>
 
             <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-primary me-2"><a href="index.php?action=connection">Login</a></button>
+                <a href="www/Login.php" class="btn btn-outline-primary me-2">Login</a>
             </div>
         </header>
     </div>

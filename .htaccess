@@ -1,0 +1,4 @@
+Require all granted
+Options FollowSymLinks
+DirectoryIndex home.php
+
