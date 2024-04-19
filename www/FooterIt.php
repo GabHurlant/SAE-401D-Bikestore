@@ -34,7 +34,7 @@
     <div class="col mb-3">
         <ul class="list-unstyled">
             <?php
-            $actions = ['home', 'brands', 'categories', 'shops', 'products', 'inventory', 'employees'];
+            $actions = ['home', 'add', 'update', 'delete'];
             $currentAction = isset($_GET["action"]) ? $_GET["action"] : 'home';
             foreach ($actions as $action) {
                 $active = ($currentAction == $action) ? 'link-primary' : 'text-dark';
