@@ -35,10 +35,10 @@
         <ul class="list-unstyled">
             <?php
             $actions = ['home', 'brands', 'categories', 'shops', 'products', 'inventory'];
-            $currentAction = isset($_GET["action"]) ? $_GET["action"] : 'home';
+            $currentAction = basename($_SERVER['PHP_SELF'], ".php");
             foreach ($actions as $action) {
                 $active = ($currentAction == $action) ? 'link-primary' : 'text-dark';
-                echo "<li class='nav-item mb-2'><a href=\"index.php?action=$action\" class=\"nav-link px-2 $active\">" . ucfirst($action) . "</a></li>";
+                echo "<li><a href=\"$action.php\" class=\"nav-link px-2 $active\">" . ucfirst($action) . "</a></li>";
             }
             ?>
         </ul>

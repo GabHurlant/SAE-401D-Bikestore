@@ -38,7 +38,7 @@
             $currentAction = isset($_GET["action"]) ? $_GET["action"] : 'home';
             foreach ($actions as $action) {
                 $active = ($currentAction == $action) ? 'link-primary' : 'text-dark';
-                echo "<li><a href=\"index.php?action=$action\" class=\"nav-link px-2 $active\">" . ucfirst($action) . "</a></li>";
+                echo "<li><a href=\"$action.php\" class=\"nav-link px-2 $active\">" . ucfirst($action) . "</a></li>";
             }
             ?>
         </ul>

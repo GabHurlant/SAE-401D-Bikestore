@@ -49,22 +49,19 @@
                     ?>
                 </ul>
             </nav>
-            <div class="dropdown text-end">
-                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="" alt="profile pic" width="32" height="32" class="rounded-circle">
-                </a>
-                <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="index.php?action=settings">Settings</a></li>
-                    <li><a class="dropdown-item" href="index.php?action=profile">Profile</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="index.php?action=disconnection">Sign out</a></li>
-                </ul>
-            </div>
-        </header>
+            <a href="" class="btn btn-primary btn-signout">Sign out</a>
     </div>
-
+    </header>
+    </div>
+    <script>
+        document.querySelector('.btn-signout').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to sign out?')) {
+                document.cookie = "employeeInfo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                location.reload();
+            }
+        });
+    </script>
 </body>
 
 </html>
